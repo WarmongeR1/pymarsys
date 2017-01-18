@@ -1,8 +1,16 @@
 # pymarsys: Python client for the Emarsys API
 
-## pymarsys allows you to choose the type of execution you want for the client: synchronous or asynchronous.
+[![Coverage Status](https://coveralls.io/repos/github/transcovo/pymarsys/badge.svg?branch=master)](https://coveralls.io/github/transcovo/pymarsys?branch=master)
 
-**Warning**: pymarsys is currently under development and on **Pre-Alpha** version. Use with caution!
+pymarsys allows you to choose the type of execution you want for the client: synchronous or asynchronous.
+
+**Warning**: pymarsys is currently under development and on **Pre-Alpha** version. Use with caution! 
+Currently implemented endpoints are:
+
+* contacts
+* contact_fields
+
+If you want to make calls to other endpoints, for now you can use the `make_call` method of the `SyncConnection` or `AsyncConnection` classes.
 
 **Python 2.x compatibility**: If you are using python 2.x, don't, just don't.
 
