@@ -16,7 +16,7 @@ dev-requirements: pip-tools
 		pip-sync dev-requirements.txt
 
 test:
-		py.test apps
+		py.test
 
 
 .PHONY: docs test
