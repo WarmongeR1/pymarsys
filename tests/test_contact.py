@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+
+from unittest import TestCase
+
 import pytest
 import responses
 from urllib.parse import urljoin
@@ -132,7 +136,7 @@ EMARSYS_CONTACTS_DELETE_RESPONSE = {
 }
 
 
-class TestContact:
+class TestContact(TestCase):
     def test_init_no_exception(self):
         connection = SyncConnection(TEST_USERNAME, TEST_SECRET)
         Contact(connection)

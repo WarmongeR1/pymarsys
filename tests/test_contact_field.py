@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
+from unittest import TestCase
+from urllib.parse import urljoin
+
 import pytest
 import responses
-from urllib.parse import urljoin
 
 from pymarsys.connections import SyncConnection
 from pymarsys.contact_field import ContactField
@@ -53,7 +56,7 @@ EMARSYS_CONTACT_FIELDS_LAST_CHANGE = {
 }
 
 
-class TestContactField:
+class TestContactField(TestCase):
     def test_init_no_exception(self):
         connection = SyncConnection(TEST_USERNAME, TEST_SECRET)
         ContactField(connection)

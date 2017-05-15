@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .contact import Contact
 from .contact_field import ContactField
 
