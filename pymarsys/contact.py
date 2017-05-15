@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from urllib.parse import urljoin
+
 from .base_endpoint import BaseEndpoint
 
 
@@ -145,7 +147,7 @@ class Contact(BaseEndpoint):
             'replyText': 'OK'
         }
         """
-        query_endpoint = '{}/{}/'.format(self.endpoint, 'query')
+        query_endpoint = urljoin(self.endpoint, 'query/')
         params = {
             'return': field_id_to_return,
         }

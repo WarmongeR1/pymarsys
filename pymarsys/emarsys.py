@@ -13,7 +13,7 @@ class Emarsys:
         {'data': {'id': 123456789}, 'replyCode': 0, 'replyText': 'OK'}
 
     """
-    def __init__(self, connection):
+    def __init__(self, connection, **kwargs):
         self.connection = connection
-        self.contacts = Contact(self.connection)
-        self.contact_fields = ContactField(self.connection)
+        self.contacts = Contact(self.connection, **kwargs)
+        self.contact_fields = ContactField(self.connection, **kwargs)
