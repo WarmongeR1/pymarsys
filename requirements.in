@@ -1,0 +1,4 @@
+aiohttp==1.0.5
+aioresponses==0.1.2
+requests==2.12.1
+responses==0.5.1

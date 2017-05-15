@@ -1,0 +1,5 @@
+-r requirements.in
+
+# py.test plugins
+pytest
+
