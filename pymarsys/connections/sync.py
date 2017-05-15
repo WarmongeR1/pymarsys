@@ -6,6 +6,7 @@ import requests
 from .base import BaseConnection, EMARSYS_URI
 from .exceptions import ApiCallError
 
+
 class SyncConnection(BaseConnection):
     """
     Synchronous connection for Ermasys or inherited-from BaseEndpoint objects.
