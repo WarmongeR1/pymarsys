@@ -65,8 +65,8 @@ class BaseConnection(ABC):
         http_headers = {
             'X-WSSE': wsse_header,
             'Content-Type': 'application/json',
-            **other_http_headers,
         }
+        http_headers.update(other_http_headers)
         return http_headers
 
 
