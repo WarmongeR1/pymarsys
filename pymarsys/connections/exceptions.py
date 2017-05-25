@@ -2,6 +2,16 @@
 
 __all__ = [
     'ApiCallError',
+    'ArgumentError',
+    'HttpError',
+    'RateLimitExceeded',
+    'AuthenticationError',
+    'BadGatewayError',
+    'BadRequestError',
+    'ResourceNotFound',
+    'ServerError',
+    'ServiceUnavailableError',
+    'UnexpectedError',
 ]
 
 

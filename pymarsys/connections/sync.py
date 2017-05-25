@@ -53,9 +53,10 @@ class SyncConnection(BaseConnection):
             response.raise_for_status()
         except requests.exceptions.HTTPError as err:
             raise ApiCallError(
-                'Error message: "{}" \n Error details: "{}"'.format(
+                message='Error message: "{}" \n Error details: "{}"'.format(
                     err,
                     response.text
-                )
+                ),
+                context=response
             )
         return response.json()

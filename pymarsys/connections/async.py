@@ -53,9 +53,10 @@ class AsyncConnection(BaseConnection):
                 response.raise_for_status()
             except aiohttp.errors.HttpProcessingError as err:
                 raise ApiCallError(
-                    'Error message: "{}" \n Error details: "{}"'.format(
+                    message='Error message: "{}" \n Error details: "{}"'.format(
                         err,
                         await response.text()
-                    )
+                    ),
+                    context=response
                 )
             return await response.json()
