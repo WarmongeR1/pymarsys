@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import base64
-import datetime
 import hashlib
 import uuid
 from abc import ABC, abstractmethod
+from datetime import datetime
+from pymarsys.connections import exceptions
 
 __all__ = [
     'EMARSYS_URI',
@@ -33,7 +34,7 @@ class BaseConnection(ABC):
         :return: nonce, created, password_digest.
         """
         nonce = uuid.uuid4().hex
-        created = datetime.datetime.utcnow().strftime(
+        created = datetime.utcnow().strftime(
             '%Y-%m-%dT%H:%M:%S+00:00'
         )
         sha1 = hashlib.sha1(
@@ -66,3 +67,23 @@ class BaseConnection(ABC):
         }
         http_headers.update(other_http_headers)
         return http_headers
+
+    def raise_errors_on_failure(self, resp):
+        if resp.status_code == 404:
+            raise exceptions.ResourceNotFound('Resource Not Found')
+        elif resp.status_code == 401:
+            raise exceptions.AuthenticationError('Unauthorized')
+        elif resp.status_code == 403:
+            raise exceptions.AuthenticationError('Forbidden')
+        elif resp.status_code == 500:
+            raise exceptions.ServerError('Server Error')
+        elif resp.status_code == 502:
+            raise exceptions.BadGatewayError('Bad Gateway Error')
+        elif resp.status_code == 503:
+            raise exceptions.ServiceUnavailableError('Service Unavailable')
+
+    def raise_errors_on_limits(self, resp):
+        headers = resp.headers
+        remaining = headers.get('x-ratelimit-remaining', 200)
+        if not remaining:
+            raise exceptions.RateLimitExceeded("Rate limit exceeded")

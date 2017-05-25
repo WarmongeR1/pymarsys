@@ -46,6 +46,9 @@ class SyncConnection(BaseConnection):
             json=payload,
             params=params
         )
+        self.raise_errors_on_failure(response)
+        self.raise_errors_on_limits(response)
+
         try:
             response.raise_for_status()
         except requests.exceptions.HTTPError as err:
